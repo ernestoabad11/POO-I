@@ -1,0 +1,90 @@
+#include <iostream>
+#include <cstdlib>
+#include <time.h>
+#include<string>
+using namespace std;
+string refranes(int n){
+    string refranes[10]={"A caballo regalado","Camaron que se duerme"};
+    return refranes[n];
+}
+string refranesp2(int n){
+    string refranes[10]={"no se le mira el diente","se lo lleva la corriente"};
+    return refranes[n];
+}
+string obtenerRespuesta(){
+	string resp;
+	getline(cin,resp);
+	return resp;
+}
+string compararRespuesta(string respuesta,int n){
+	string resultado;
+	if(respuesta==refranesp2(n)){
+		resultado="ganar";
+		cout<<"Acertaste"<<endl;
+	}
+	else{
+		resultado="perder";
+		cout<<"Intenta otra vez"<<endl;
+	}
+	return resultado;
+}
+void mostrarRefranIncompleto(int n){
+    string refran=refranesp2(n);
+    int aux=0;
+    for (int j=0;j<refranesp2(n).length();j++){
+        if(refran[j]!=' '){refran[j]='*';}
+    }
+    cout<<refranes(n)<<refran;
+}
+void mostrarRefranCompleto(int n){
+    string refran=refranes(n);
+    string refranp2=refranesp2(n);
+    cout<<refran<<refranp2<<endl;
+}
+void mostrarSignificado(int n){
+    string significado[10]={};
+}
+void menuPrograma1(){
+    cout << "Menu"<<endl;
+    cout << "(1)Jugar a completar refranes."<<endl;
+    cout << "(3)Salir."<<endl;
+}
+void menuPrograma(){
+    cout << "Menu"<<endl;
+    cout << "(1)Jugar a completar refranes."<<endl;
+    cout << "(2)Mostrar resultados anteriores."<<endl;
+    cout << "(3)Salir."<<endl;
+}
+
+int main(){
+
+    string palabra;
+    int n,eleccion;
+    srand(time(NULL));
+    cout << endl<<endl;
+    cout << "  **********************************************"<<endl;
+    cout << "  *                                            *"<<endl;
+    cout << "  *      Bienvenido al juego de refranes       *"<<endl;
+    cout << "  *                                            *"<<endl;
+    cout << "  **********************************************"<<endl;
+    cout <<endl<<endl;
+    menuPrograma1();
+    cout <<"Elija una opción: ";
+    cin>>eleccion;
+    do{
+		if(eleccion==1){
+        n=rand()%2;
+        mostrarRefranIncompleto(n);
+        cout<<endl;
+        cout<<"ingrese su respuesta: \n";
+        obtenerRespuesta();
+        compararRespuesta(obtenerRespuesta(),n);
+    }
+    menuPrograma();
+    cout <<"Elija una opción: ";
+    cin>>eleccion;
+    if(eleccion==2){
+	cout<<"hola"<<endl;;
+	}
+	}while(eleccion!=3);
+}
