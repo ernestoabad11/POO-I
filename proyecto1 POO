@@ -45,6 +45,7 @@ string compararRespuesta(string respuesta,int n){
     }
     else{
         resultado="perder";
+        cout<<endl;
         cout<<"Intenta otra vez"<<endl;
     }
     return resultado;
